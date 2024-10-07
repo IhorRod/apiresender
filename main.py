@@ -9,6 +9,7 @@ load_dotenv()
 app = FastAPI()
 BASE_URL = os.getenv("BASE_URL")
 TOKEN = os.getenv("TOKEN")
+PORT = os.getenv("PORT") or 8000
 
 # Set up CORS middleware
 app.add_middleware(
@@ -38,4 +39,4 @@ async def proxy(request: Request, path: str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="localhost", port=8000)
+    uvicorn.run(app, host="localhost", port=int(PORT))
