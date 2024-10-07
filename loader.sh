@@ -1,7 +1,11 @@
 #!/bin/bash
 
+# Update package list and install Python 3.10
+sudo apt update
+sudo apt install -y python3.10 python3.10-venv
+
 # Create a virtual environment
-python3 -m venv venv
+python3.10 -m venv venv
 source venv/bin/activate
 
 # Prompt for environment variables
