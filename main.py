@@ -32,7 +32,9 @@ async def proxy(request: Request, path: str):
         'accept': 'application/json',
     }
 
-    async with httpx.AsyncClient() as client:
+    timeout = httpx.Timeout(10.0)
+
+    async with httpx.AsyncClient(timeout=timeout) as client:
         response = await client.request(method, url, headers=headers)
 
     return Response(content=response.content, status_code=response.status_code, headers=dict(response.headers))
