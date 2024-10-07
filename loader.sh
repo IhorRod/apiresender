@@ -35,7 +35,7 @@ After=network.target
 [Service]
 User=$USER
 WorkingDirectory=$(pwd)
-ExecStart=$(pwd)/venv/bin/uvicorn main:app --host 0.0.0.0 --port $PORT
+ExecStart=$(pwd)/venv/bin/uvicorn main:app --host localhost --port $PORT
 EnvironmentFile=$(pwd)/.env
 Restart=always
 
