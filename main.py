@@ -8,7 +8,6 @@ import os
 load_dotenv()
 app = FastAPI()
 BASE_URL = os.getenv("BASE_URL")
-TOKEN = os.getenv("TOKEN")
 PORT = os.getenv("PORT") or 8000
 
 # Set up CORS middleware
@@ -26,9 +25,10 @@ async def proxy(request: Request, path: str):
     query_params = request.query_params
     if query_params:
         url = f"{url}?{query_params}"
+    token = request.headers.get("X-Token")
     method = request.method
     headers = {
-        'X-Token': TOKEN,
+        'X-Token': token,
         'accept': 'application/json',
     }
 
